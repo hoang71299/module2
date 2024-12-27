@@ -15,7 +15,6 @@ public class StudentManagement {
         System.out.println("id = " + s1.getId());
         System.out.println("name = " + s1.getName());
         System.out.println("score = " + s1.getScore());
-
         s1.setName("");
 
     }

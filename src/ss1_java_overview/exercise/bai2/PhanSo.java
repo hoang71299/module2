@@ -76,6 +76,7 @@ public class PhanSo {
         }
     }
 
+
     public PhanSo tong(PhanSo ps){
         PhanSo tong = new PhanSo();
         tong.tu = this.tu * ps.mau + this.mau * ps.tu;
