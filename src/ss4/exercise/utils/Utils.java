@@ -175,4 +175,27 @@ public class Utils {
             System.out.println("Khong tim thay ma cap nhap cap nhap");
         }
     }
+
+    public static void delete() {
+        System.out.println("Nhap vao ma can xoa: ");
+        String id = scanner.nextLine();
+
+        if (id.startsWith("DTC")) { // Xóa điện thoại cũ
+            boolean removed = oldPhones.removeIf(oldPhone -> oldPhone.getId().equals(id));
+            if (removed) {
+                System.out.println("Xoa dien thoai cu thanh cong.");
+            } else {
+                System.out.println("Khong tim thay dien thoai cu voi ma: " + id);
+            }
+        } else if (id.startsWith("DTM")) { // Xóa điện thoại mới
+            boolean removed = newPhones.removeIf(newPhone -> newPhone.getId().equals(id));
+            if (removed) {
+                System.out.println("Xoa dien thoai moi thanh cong.");
+            } else {
+                System.out.println("Khong tim thay dien thoai moi voi ma: " + id);
+            }
+        } else {
+            System.out.println("Ma khong hop le.");
+        }
+    }
 }

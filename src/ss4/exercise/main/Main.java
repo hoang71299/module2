@@ -42,6 +42,7 @@ public class Main {
                         update();
                         break;
                     case 4:
+                        delete();
                         break;
                     case 5:
                         break;

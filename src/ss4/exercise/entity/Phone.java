@@ -79,6 +79,7 @@ public class Phone {
     public void output(){
         System.out.println("Id : " + id);
         System.out.println("Name : " + name);
+
         System.out.println("Price : " + price);
         System.out.println("Warranty : " + warranty);
         System.out.println("Manufacturer : " + manufacturer);
