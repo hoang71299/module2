@@ -19,6 +19,7 @@ public class Person {
         System.out.println("Nhap vao id : ");
         id = Integer.parseInt(scanner.nextLine());
 
+
         System.out.println("Nhap vao ten : ");
         name = scanner.nextLine();
 

@@ -30,7 +30,6 @@ public class Main {
                 System.out.println("9. Thoat");
                 System.out.println("Moi ban chon chuc nang : ");
                 choice = Integer.parseInt(scanner.nextLine());
-
                 switch (choice) {
                     case 1:
                         menuList();

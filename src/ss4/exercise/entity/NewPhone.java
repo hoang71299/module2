@@ -4,8 +4,6 @@ import java.util.Scanner;
 
 public class NewPhone extends Phone{
     private int quantity;
-
-
     public NewPhone() {
     }
 
