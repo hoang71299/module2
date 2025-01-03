@@ -23,7 +23,6 @@ public class Utils {
                 "Apple", 100));
         phones.add(new NewPhone("DTM002", "Iphone 12", 7000000.0, 12,
                 "Apple", 100));
-
     }
 
     public static void menuList() {
@@ -287,4 +286,100 @@ public class Utils {
             }
         }
     }
+
+    public static void menuSearch() {
+        int choose;
+        while (true) {
+            do {
+                System.out.println("TÌM KIẾM ĐIỆN THOẠI");
+                System.out.println("1. Tìm kiếm tất cả điện thoại");
+                System.out.println("2. Tìm kiếm điện thoại cũ");
+                System.out.println("3. Tìm kiếm điện thoại mới");
+                System.out.println("4. Trở về menu chính");
+                System.out.print("Mời bạn lựa chọn: ");
+                choose = Integer.parseInt(scanner.nextLine());
+                switch (choose) {
+                    case 1:
+                        menuSearchAllPhone();
+                        break;
+                    case 2:
+
+                        break;
+                    case 3:
+
+                        break;
+                    case 4:
+                        return;
+                    default:
+                        System.out.println("Lựa chọn không hợp lệ, xin chọn lại!");
+                }
+            } while (choose < 0 || choose > 4);
+        }
+    }
+
+    private static void menuSearchAllPhone() {
+        int choose;
+
+        while (true) {
+            do {
+                System.out.println("TÌM KIẾM THEO TẤT CẢ ĐIỆN THOẠI:");
+                System.out.println("1. Tìm kiếm theo giá");
+                System.out.println("2. Tìm kiếm theo tên");
+                System.out.println("3. Tìm kiếm theo hãng");
+                System.out.println("4. Trở về menu Tìm kiếm");
+                System.out.print("Mời bạn lựa chọn: ");
+                choose = Integer.parseInt(scanner.nextLine());
+                switch (choose) {
+                    case 1:
+                        System.out.println("Nhập vào khoảng giá muốn tìm");
+                        System.out.print("Nhập vào giá từ: ");
+                        int priceFrom = Integer.parseInt(scanner.nextLine());
+
+                        System.out.print("Nhập vào giá đến: ");
+                        int priceTo = Integer.parseInt(scanner.nextLine());
+
+                        int count = 1;
+                        for (Phone phone : phones) {
+                            if (phone.getPrice() >= priceFrom
+                                    && phone.getPrice() <= priceTo) {
+                                System.out.println("Thông tin điện thoại thứ " + count++);
+                                phone.output();
+                            }
+                        }
+                        break;
+                    case 2:
+                        System.out.print("Nhập vào tên cần tìm: ");
+                        String name = scanner.nextLine();
+                        count = 1;
+                        for (Phone phone : phones) {
+                            if (phone.getName().contains(name)) {
+                                System.out.println("Thông tin điện thoại thứ " + count++);
+                                phone.output();
+                            }
+                        }
+                        break;
+
+                    case 3:
+                        System.out.print("Nhập vào hãng điện thoại cần tìm: ");
+                        String manufacturer = scanner.nextLine();
+                        count = 1;
+                        for (Phone phone : phones) {
+                            if (phone.getManufacturer().contains(manufacturer)) {
+                                System.out.println("Thông tin điện thoại thứ " + count++);
+                                phone.output();
+                            }
+                        }
+                        break;
+
+                    case 4:
+                    return;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ, xin chọn lại!");
+            }
+        } while (choose < 0 || choose > 4) ;
+    }
+}
+
+
+
 }

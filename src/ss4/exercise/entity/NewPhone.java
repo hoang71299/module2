@@ -31,9 +31,4 @@ public class NewPhone extends Phone{
         System.out.println("Quantity : " + quantity);
     }
 
-
-
-
-
-
 }

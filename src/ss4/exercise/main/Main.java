@@ -47,6 +47,7 @@ public class Main {
                         menuSort();
                         break;
                     case 6:
+                        menuSearch();
                         break;
                     case 7:
                         break;
