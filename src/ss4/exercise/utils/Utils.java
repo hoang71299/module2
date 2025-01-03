@@ -15,13 +15,13 @@ public class Utils {
 
 
     static {
-        phones.add(new OldPhone("DTC001", "Iphone 11", 4000000.0, 12, "Apple"
+        phones.add(new OldPhone("DTC001", "Iphone 11", 3000000.0, 12, "Apple"
                 , 100, "Da qua su dung"));
-        phones.add(new OldPhone("DTC002", "Iphone 12", 5000000.0, 12, "Apple"
+        phones.add(new OldPhone("DTC002", "Iphone 12", 2000000.0, 12, "Apple"
                 , 100, "Da qua su dung"));
         phones.add(new NewPhone("DTM001", "Iphone 12", 5000000.0, 12,
                 "Apple", 100));
-        phones.add(new NewPhone("DTM002", "Iphone 12", 5000000.0, 12,
+        phones.add(new NewPhone("DTM002", "Iphone 12", 7000000.0, 12,
                 "Apple", 100));
 
     }
@@ -43,7 +43,7 @@ public class Utils {
                 switch (choice) {
                     case 1:
                         for (int i = 0; i < phones.size(); i++) {
-                            System.out.println("Thong tin dien thoai cu thứ " + (i + 1) + " : ");
+                            System.out.println("Thong tin dien thoai  thứ " + (i + 1) + " : ");
                             phones.get(i).output();
                         }
 
@@ -51,20 +51,20 @@ public class Utils {
                     case 2:
                         System.out.println("Danh sach dien thoai cu");
                         int count = 1;
-                        for (int i = 0; i < phones.size(); i++) {
-                            if (phones.get(i) instanceof OldPhone) {
-                                System.out.println("Thong tin dien thoai cu thu " + count++ + " : "+ " : ");
-                                phones.get(i).output();
+                        for (Phone phone : phones) {
+                            if (phone instanceof OldPhone) {
+                                System.out.println("Thong tin dien thoai cu thu " + count++ + " : " + " : ");
+                                phone.output();
                             }
                         }
                         break;
 
                     case 3:
                         count = 1;
-                        for (int i = 0; i < phones.size(); i++) {
-                            if (phones.get(i) instanceof NewPhone) {
+                        for (Phone phone : phones) {
+                            if (phone instanceof NewPhone) {
                                 System.out.println("Thong tin dien thoai moi thu " + count++ + " : ");
-                                phones.get(i).output();
+                                phone.output();
                             }
                         }
                         break;
@@ -203,8 +203,7 @@ public class Utils {
     public static void delete() {
         System.out.print("Nhập vào mã muốn xóa: ");
         String id = scanner.nextLine();
-
-        if (id.startsWith("DTC") || id.startsWith("DTH")) {
+        if (id.startsWith("DTC") || id.startsWith("DTM")) {
             boolean isExistPhone = false;
             for (Phone phone : phones) {
                 if (phone.getId().equals(id)) {
@@ -220,12 +219,72 @@ public class Utils {
                     break;
                 }
             }
-
             if (!isExistPhone) {
                 System.out.println("Không tìm thấy mã muốn xóa!");
             }
         } else {
             System.out.println("Mã không hợp lệ!");
+        }
+    }
+
+    public static void menuSort() {
+        int choice;
+        while (true) {
+            System.out.println("\n--- SẮP XẾP ĐIỆN THOẠI THEO GIÁ ---");
+            System.out.println("1. Tăng dần");
+            System.out.println("2. Giảm dần");
+            System.out.println("3. Trở về Menu");
+            System.out.print("Nhập lựa chọn: ");
+
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+                switch (choice) {
+                    case 1:
+                        for (int i = 0; i < phones.size() - 1; i++) {
+                            for (int j = i + 1; j < phones.size(); j++) {
+                                if (phones.get(i).getPrice() > phones.get(j).getPrice()) {
+                                    Phone temp = phones.get(i);
+                                    phones.set(i, phones.get(j));
+                                    phones.set(j, temp);
+                                }
+                            }
+                        }
+                        System.out.println("Danh sách điện thoại được sắp xếp theo giá tăng dần:");
+                        display();
+                        break;
+                    case 2:
+                        for (int i = 0; i < phones.size() - 1; i++) {
+                            for (int j = i + 1; j < phones.size(); j++) {
+                                if (phones.get(i).getPrice() < phones.get(j).getPrice()) {
+                                    Phone temp = phones.get(i);
+                                    phones.set(i, phones.get(j));
+                                    phones.set(j, temp);
+                                }
+                            }
+                        }
+                        System.out.println("Danh sách điện thoại được sắp xếp theo giá giảm dần:");
+                        display();
+                        break;
+                    case 3:
+                        System.out.println("Trở về menu chính...");
+                        return;
+                    default:
+                        System.out.println("Lựa chọn không hợp lệ. Vui lòng nhập lại.");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Vui lòng nhập số hợp lệ!");
+            }
+        }
+    }
+
+    private static void display() {
+        if (phones.isEmpty()) {
+            System.out.println("Danh sách điện thoại trống.");
+        } else {
+            for (int i = 0; i < phones.size(); i++) {
+                System.out.println("Điện thoại " + (i + 1) + ":");
+                phones.get(i).output();
+            }
         }
     }
 }
