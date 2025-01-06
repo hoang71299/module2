@@ -1,5 +1,6 @@
 package ss6.exercise;
 
+
 public class MainQueue {
 	public static void main(String[] args) {
 		MyQueue<Integer> myQueue = new MyQueue<>();
