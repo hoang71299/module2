@@ -514,7 +514,7 @@ public class Utils {
 
 		for (Phone phone : phones) {
 			if(phone instanceof OldPhone){
-				((OldPhone) phone).applyDiscount(percentDiscount);
+				((OldPhone) phone).applyDiscountToOldPhones(percentDiscount);
 			}
 
 
