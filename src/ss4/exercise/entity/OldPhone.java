@@ -2,9 +2,14 @@ package ss4.exercise.entity;
 
 import java.util.Scanner;
 
-public class OldPhone extends Phone {
+public class OldPhone extends Phone implements Discountable {
 	private int bateryStatus;
 	private String description;
+
+	@Override
+	public double calculateTotalPrice() {
+		return getPrice();
+	}
 
 	public OldPhone() {
 	}
@@ -39,6 +44,12 @@ public class OldPhone extends Phone {
 		bateryStatus = Integer.parseInt(scanner.nextLine());
 		System.out.println("Nhap vao mo ta : ");
 		description = scanner.nextLine();
+	}
+
+	@Override
+	public void applyDiscountToOldPhones(double percentDiscount) {
+		double discount = getPrice() * (1 - percentDiscount / 100.0);
+		setPrice(discount);
 	}
 }
 

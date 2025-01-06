@@ -5,6 +5,11 @@ import java.util.Scanner;
 public class NewPhone extends Phone {
 	private int quantity;
 
+	@Override
+	public double calculateTotalPrice() {
+		return getPrice() * quantity;
+	}
+
 	public NewPhone() {
 	}
 

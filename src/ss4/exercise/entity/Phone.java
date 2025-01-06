@@ -3,13 +3,15 @@ package ss4.exercise.entity;
 
 import java.util.Scanner;
 
-public class Phone {
+public  abstract class Phone {
 	private String id;
 	private String name;
 	private Double price;
 	private int warranty;
 	private String manufacturer;
 
+
+	public abstract double calculateTotalPrice();
 	public Phone() {
 
 	}

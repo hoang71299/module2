@@ -50,11 +50,16 @@ public class Main {
 						menuSearch();
 						break;
 					case 7:
-              menuSearchOldPhone();
+						System.out.println("Tổng giá của tất cả các điện thoại: "
+										+ calculateTotalPriceInStore());
 						break;
 					case 8:
-						menuSearchNewPhone();
+						System.out.print("Nhập vào phần trăm muốn giảm giá: ");
+						double percentDiscount = Double.parseDouble(scanner.nextLine());
+						applyDiscountToOldPhones(percentDiscount);
+						System.out.println("Đã giảm giá thành công");
 						break;
+
 					case 9:
 						return;
 					default:

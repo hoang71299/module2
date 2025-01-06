@@ -304,10 +304,10 @@ public class Utils {
 						menuSearchAllPhone();
 						break;
 					case 2:
-
+						menuSearchOldPhone();
 						break;
 					case 3:
-
+						menuSearchNewPhone();
 						break;
 					case 4:
 						return;
@@ -501,6 +501,24 @@ public class Utils {
 					System.out.println("Lựa chọn không hợp lệ, xin chọn lại!");
 			}
 		} while (choose < 0 || choose > 4);
+	}
+	public static double calculateTotalPriceInStore() {
+
+		double total = 0.0;
+		for (Phone phone : phones) {
+			total += phone.getPrice();
+		}
+		return total;
+	}
+		public static void applyDiscountToOldPhones(double percentDiscount) {
+
+		for (Phone phone : phones) {
+			if(phone instanceof OldPhone){
+				((OldPhone) phone).applyDiscount(percentDiscount);
+			}
+
+
+		}
 
 
 
