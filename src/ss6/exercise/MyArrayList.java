@@ -2,133 +2,126 @@ package ss6.exercise;
 
 public class MyArrayList {
 	private int capacity;
-
-	private int[] arr;
-
 	private int size;
+	private int[] arr;
+	private int[] emptyArray = {};
 
-	private int size() {
+	public int size() {
 		return size;
 	}
-
-	private int[]  emptyArray = {};
 
 	public MyArrayList() {
 		arr = emptyArray;
 	}
 
-	public MyArrayList(int capacity) {
-		this.capacity = capacity;
-		this.arr = new int[capacity];
-	}
-
-	// them phan tu vao cuoi
+	//a. add
 	public void add(int element) {
 		if (arr == emptyArray) {
 			this.capacity = 10;
-			this.arr = emptyArray;
+			this.arr = new int[this.capacity];
 		}
-
-		if(size == capacity) {
+		if (size == this.capacity) {
 			this.capacity *= 1.5;
-			if(size == capacity) {
+			if (size == this.capacity) {
 				capacity++;
 			}
 
-			int[] arr2 = new int[this.capacity];
-
-			// copy phan tu
-			for(int i = 0; i < size; i++) {
-				arr2[i] = arr[i];
+			int[] brr = new int[this.capacity];
+			for (int i = 0; i < size; i++) {
+				brr[i] = arr[i];
 			}
-			arr = arr2;
 		}
 		arr[size] = element;
 		size++;
 	}
-	//b. tra ve thong tin doi tuong
 
+	//b. ToString
+
+	@Override
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-
-		for(int i = 0; i < size; i++) {
-			sb.append(arr[i]).append(" ");
+		for (int i = 0; i < size; i++) {
+			sb.append(arr[i]).append("\t");
 		}
 		return sb.toString();
 	}
 
-	// c. add phan tu vao vi tri index
-	public void add(int index, int element) {
-		if(index < 0 || index > size) {
-			System.out.println("Khong hop le !!");
+	//c. add(int index , int element)
+	public void addFromIndexToElement(int index, int element) {
+		if (index < 0 || index > size) {
+			System.out.println("Index ngoai pham vi !!!");
 			return;
 		}
-		if(size == capacity) {
+		if (size == this.capacity) {
 			this.capacity *= 1.5;
-			if(size == capacity) {
+			if (size == this.capacity) {
 				capacity++;
 			}
-			int [] arr2 = new int[capacity];
 
-			for(int i = 0; i < size; i++) {
-				arr2[i] = arr[i];
-			}
-			arr2[index] = element;
+			int[] brr = new int[this.capacity];
 
-			for(int i = index; i < size; i++) {
-				arr2[i + 1] = arr[i];
+			for (int i = 0; i < index; i++) {
+				brr[i] = arr[i];
 			}
-			arr = arr2;
+
+			brr[index] = element;
+
+			for (int i = index; i < size; i++) {
+				brr[i + 1] = arr[i];
+			}
+
+			arr = brr;
 		} else {
-			for (int i = size; i > index ; i--) {
+			for (int i = size; i > index; i--) {
 				arr[i] = arr[i - 1];
 			}
 			arr[index] = element;
 		}
 		size++;
 	}
-	// d. thay the vi tri tai phan tu index
-	public void thayThe(int index, int element) {
-		if(index < 0 || index > size) {
-			System.out.println("Khong hop le !!");
+
+	//d. set(int index , int element)
+	public void set(int index, int element) {
+		if (index < 0 || index >= size) {
+			System.out.println("Index ngoai pham vi !!!");
 			return;
 		}
 		arr[index] = element;
 	}
 
-	// e. tra ve phan tu tai index
-	public Integer traPhanTu(int index) {
-		if(index < 0 || index > size) {
-			System.out.println("Khong hop le !!");
+	//e. get(int index)
+	public Integer get(int index) {
+		if (index < 0 || index >= size) {
+			System.out.println("Index ngoai pham vi !!!");
 			return null;
 		}
 		return arr[index];
 	}
 
-	// f. lay vi tri index phan tu dau tien tim thay
+	//f. indexOf(int element)
 	public int indexOf(int element) {
-		for(int i = 0; i < size; i++) {
-			if(arr[i] == element) {
+		for (int i = 0; i < size; i++) {
+			if (arr[i] == element) {
 				return i;
 			}
 		}
 		return -1;
 	}
 
-	// g. lay vi tri index phan tu cuoi cung dau tien tim thay
+	//g. lastIndexOf(int element)
 	public int lastIndexOf(int element) {
-		for(int i = size - 1; i >= 0; i--) {
-			if(arr[i] == element) {
+		for (int i = size - 1; i >= 0; i--) {
+			if (arr[i] == element) {
 				return i;
 			}
 		}
 		return -1;
 	}
 
-	// h. xoá phan tu tai vi tri index
+	//h. remove(int index)
 	public void remove(int index) {
-		if(index < 0 || index > size) {
-			System.out.println("Khong hop le !!");
+		if (index < 0 || index >= size) {
+			System.out.println("Index ngoai pham vi !!!");
 			return;
 		}
 		for (int i = index; i < size - 1; i++) {
@@ -137,11 +130,11 @@ public class MyArrayList {
 		size--;
 	}
 
-	// i. xoa tat ca phan tu element
+	//i. removeElement (int element)
 	public void removeElement(int element) {
 		int newIndex = 0;
-		for(int i = 0; i < size; i++) {
-			if(arr[i] != element) {
+		for (int i = 0; i < size; i++) {
+			if (arr[i] != element) {
 				arr[newIndex] = arr[i];
 				newIndex++;
 			}
