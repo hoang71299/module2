@@ -59,13 +59,11 @@ public class Main {
 						applyDiscountToOldPhones(percentDiscount);
 						System.out.println("Đã giảm giá thành công");
 						break;
-
 					case 9:
 						return;
 					default:
 						System.out.println("Lua chon khong hop le vui long chon lai");
 				}
-
 			} while (choice < 1 || choice > 9);
 
 		}

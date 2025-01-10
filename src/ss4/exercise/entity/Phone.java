@@ -3,7 +3,7 @@ package ss4.exercise.entity;
 
 import java.util.Scanner;
 
-public  abstract class Phone {
+public  abstract class  Phone implements Comparable<Phone> {
 	private String id;
 	private String name;
 	private Double price;
@@ -14,6 +14,12 @@ public  abstract class Phone {
 	public abstract double calculateTotalPrice();
 	public Phone() {
 
+	}
+
+
+	@Override
+	public int compareTo(Phone o) {
+		return Double.compare(this.getPrice(), o.getPrice());
 	}
 
 	public Phone(String id, String name, Double price, int warranty, String manufacturer) {

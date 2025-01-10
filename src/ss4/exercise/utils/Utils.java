@@ -400,7 +400,6 @@ public class Utils {
 
 					System.out.print("Nhập vào giá đến: ");
 					int priceTo = Integer.parseInt(scanner.nextLine());
-
 					int count = 1;
 					for (OldPhone phone : oldPhones) {
 						if (phone.getPrice() >= priceFrom
@@ -519,8 +518,6 @@ public class Utils {
 
 
 		}
-
-
 
 	}
 
